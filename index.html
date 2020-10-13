@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Assignment</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="./js/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <div class="info">
+            <h1>Hi Jack</h1>
+            <h1>HP : {{phone_num}}</h1>
+            <h2>Total Visit : {{totalVisit}} times</h2>
+            <h2>Total points : {{totalPoints}}</h2>
+        </div>
+        <!----input points--->
+        <div class="container_top">
+            <div class="info_container">
+                <div class="customer_info">
+                    <p>Enter Points Here</p>
+                    <input type="number" v-model.number="newPoints">
+                    <br>
+                    <br>
+                    <button v-on:click="addPoints(newPoints)">Add Points</button>
+                </div>
+            </div>
+        </div>
+        <!------redemption-->
+        <div class="redeem_top">
+            <div class="redeem">
+                <div class="redeem_item">
+
+                    <p> Free 1 Cup of Coffee (100 points) <input type="submit" value="-100" id="minus_100"></p>
+
+                    <p>Free 1 piece of Cake (150 points) <input type="submit" value="-150" id="minus_150"></p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<script>
+  new Vue ({
+        el:'#app',
+        data: {
+                phone_num: 60123123123,
+                totalVisit: 100,
+                totalPoints: 100,
+                newPoints:0
+        },
+        methods:{
+            addPoints: function (newPoints){
+                this.totalPoints = this.totalPoints + newPoints;
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
