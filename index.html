@@ -8,7 +8,7 @@
     <script src="./js/vue.js"></script>
 
 </head>
-<body>
+<body style="background-color: #FB2C03;font-family: Arial,sans-serif">
     <div id="app">
         <div class="info">
             <h1>Hi Jack</h1>
@@ -21,10 +21,10 @@
             <div class="info_container">
                 <div class="customer_info">
                     <p>Enter Points Here</p>
-                    <input type="number" v-model.number="newPoints">
+                    <input type="number" v-model.number="newPoints" on.focus="on">
                     <br>
                     <br>
-                    <button v-on:click="addPoints(newPoints)">Add Points</button>
+                    <button id="add_points" v-on:click="addPoints(newPoints)">Add Points</button>
                 </div>
             </div>
         </div>
@@ -32,11 +32,8 @@
         <div class="redeem_top">
             <div class="redeem">
                 <div class="redeem_item">
-
-                    <p> Free 1 Cup of Coffee (100 points) <input type="submit" value="-100" id="minus_100"></p>
-
-                    <p>Free 1 piece of Cake (150 points) <input type="submit" value="-150" id="minus_150"></p>
-
+                        <p> Free 1 Cup of Coffee (100 points) <button id="minus_100" v-on:click="minus_100()">100</button></p>
+                    <p>Free 1 piece of Cake (150 points) <button id="minus_150" v-on:click="minus_150()">150</button></p>
                 </div>
 
             </div>
@@ -45,19 +42,39 @@
 
 <script>
   new Vue ({
-        el:'#app',
-        data: {
-                phone_num: 60123123123,
-                totalVisit: 100,
-                totalPoints: 100,
-                newPoints:0
-        },
-        methods:{
-            addPoints: function (newPoints){
-                this.totalPoints = this.totalPoints + newPoints;
-            }
-        }
-    })
+      el: '#app',
+      data: {
+          phone_num: 60123123123,
+          totalVisit: 100,
+          totalPoints: 100,
+          newPoints: 0
+      },
+      methods: {
+          addPoints: function (newPoints) {
+             if (confirm("Are You Sure ?")===true) {
+                 this.totalPoints = this.totalPoints + newPoints;
+             }
+          },
+          minus_100: function () {
+              if (confirm("Are You Sure ?")===true&&this.totalPoints >= 100) {
+                  this.totalPoints -= 100;
+              } else {
+                  alert("not enough points");
+              }
+          },
+          minus_150: function () {
+              if (confirm("Are You Sure ?")===true&&this.totalPoints >= 100) {
+
+                  this.totalPoints -= 150;
+
+              } else {
+                  alert("not enough points");
+              }
+
+          }
+
+      }
+  })
 
 </script>
 </body>

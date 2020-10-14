@@ -93,3 +93,12 @@ a:hover
     opacity: 70%;
     text-decoration: underline;
 }
+#start
+{
+    background-color:green;
+    font-size: 25px;
+    padding:8px 20px;
+    width:15%;
+    color:white;
+    border-radius: 5px;
+}
